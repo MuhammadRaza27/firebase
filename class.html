@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="email" placeholder="Enter EMail" id="email" />
+    <input type="password" placeholder="Enter Password" id="password" />
+    <button onclick="signup()">Signup </button>
+
+
+    <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-auth-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC01AN45WBfxtvNce-gNdhQQRBYiG4IIHE",
+            authDomain: "class-auth-29ba5.firebaseapp.com",
+            projectId: "class-auth-29ba5",
+            storageBucket: "class-auth-29ba5.firebasestorage.app",
+            messagingSenderId: "1095989109315",
+            appId: "1:1095989109315:web:c75eea453803d6c6b02af6"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+console.log(firebase.auth())
+// function: outsidemclass 
+// method: class =>inside
+// property:Array.length
+let email = document.getElementById("email")
+let password = document.getElementById("password")
+
+const signup = () => {
+    let userEmail = email.value
+    let userPassword = password.value
+
+    if (userEmail == "") {
+        alert("enter email")
+    }
+    else if (userPassword == "") {
+        alert("enter Password")
+    }
+    else {
+        firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+            .then((user) => {
+                console.log(user.user.
+                    uid
+                    )
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+
+}
+
+
+const signIn = () => {
+    let userEmail = email.value
+    let userPassword = password.value
+
+    if (userEmail == "") {
+        alert("enter email")
+    }
+    else if (userPassword == "") {
+        alert("enter Password")
+    }
+    else {
+        firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+            .then((user) => {
+                console.log(user)
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+
+}
